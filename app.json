@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "DEVtools",
+    "slug": "devtools",
+    "version": "0.1.0",
+    "orientation": "default",
+    "scheme": "devtools",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": true },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0C1424",
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "monochromeImage": "./assets/monochrome-icon.png"
+      }
+    },
+    "web": { "output": "static", "favicon": "./assets/icon.png" },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 96,
+          "backgroundColor": "#F6F8FC",
+          "dark": { "backgroundColor": "#0C1424" }
+        }
+      ]
+    ],
+    "experiments": { "typedRoutes": true }
+  }
+}
