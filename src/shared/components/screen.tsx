@@ -18,7 +18,11 @@ export function Screen({ children, withTopInset = false }: ScreenProps) {
           : ["bottom", "left", "right"]
       }
     >
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+      >
         <View style={styles.content}>{children}</View>
       </ScrollView>
     </SafeAreaView>

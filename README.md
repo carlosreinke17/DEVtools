@@ -10,9 +10,21 @@ processar dados localmente sempre que possível.
 - Navegação com Expo Router: início, aparência e página não encontrada.
 - Temas claro, escuro e automático (padrão), com preferência salva no dispositivo.
 - Tokens de cores, espaçamento e bordas compartilhados.
-- Tela inicial com apresentação das futuras categorias. As ferramentas e a busca
-  serão implementadas nas próximas etapas.
+- Estrutura inicial das telas e identidade visual compartilhada.
 - Testes de preferência de tema, restauração, mudanças do sistema e falhas de armazenamento.
+
+## Etapa 2
+
+- Catálogo com 17 entradas nas categorias Geradores, Validadores,
+  Formatadores / Conversores e Texto / String.
+- Busca local por nome, descrição e termos relacionados, ignorando acentos,
+  diferenças entre maiúsculas/minúsculas e espaços extras.
+- Filtros de categoria, busca e favoritos podem ser combinados, com contagens
+  de resultados e ações para recuperar buscas sem resultado.
+- Favoritos persistidos no dispositivo, compartilhados entre catálogo e detalhes.
+- Rota própria `/tools/<id>` para cada ferramenta, incluindo abertura direta na web.
+- As ferramentas estão identificadas como **Em breve**; esta etapa entrega o
+  catálogo e a navegação. Os algoritmos começam pelo CPF na Etapa 3.
 
 ## Executar
 
@@ -58,7 +70,10 @@ quando os pacotes não estão em cache. Não desative verificações TLS.
 src/
   app/                              # somente rotas e composição dos providers
   features/
-    home/presentation/              # apresentação inicial
+    catalog/
+      domain/                       # registro, categorias, busca e ids de favoritos
+      presentation/                 # catálogo, detalhes e componentes
+      state/                        # favoritos persistidos
     settings/presentation/          # escolha de aparência
   shared/
     components/                     # componentes compartilhados
@@ -66,6 +81,10 @@ src/
 tests/                              # testes de comportamento
 assets/                             # ícones e splash locais
 ```
+
+As rotas dinâmicas em `src/app/tools/` usam o mesmo registro do catálogo para
+gerar páginas estáticas. Ao adicionar uma ferramenta, cadastre seu id estável,
+categoria, nome, descrição, palavras-chave e disponibilidade no registro.
 
 Os algoritmos futuros ficarão em `src/features/tools/<ferramenta>/domain/`, sem
 dependência de componentes React. Categorias serão metadados do catálogo para
